@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "build": "yarn tsc",
+    "dev": "yarn nodemon"
+  },
+  "dependencies": {
+    "@pothos/core": "^3.41.0",
+    "graphql": "^16.8.1",
+    "graphql-yoga": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.7",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
