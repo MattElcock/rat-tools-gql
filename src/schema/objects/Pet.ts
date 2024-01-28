@@ -38,6 +38,14 @@ builder.objectType(Pet, {
     species: t.field({ type: Species, resolve: (parent) => parent.species }),
     sex: t.field({ type: Sex, resolve: (parent) => parent.sex }),
     fur: t.field({ type: [Fur], resolve: (parent) => parent.fur }),
+    latestWeight: t.field({
+      type: Weight,
+      resolve: (parent) => {
+        const weights = parent.weights;
+        weights.sort((a, b) => b.dateTaken.getTime() - a.dateTaken.getTime());
+        return weights[0];
+      },
+    }),
     weights: t.field({
       type: [Weight],
       resolve: (parent) => parent.weights,
