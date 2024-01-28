@@ -1,4 +1,5 @@
-import mockData from "../mocks/pet.json";
+import { ParentShape } from "@pothos/core";
+import mockData from "../mocks/group.json";
 import { Fur } from "../schema/enums/Fur";
 import { Metric } from "../schema/enums/Metric";
 import { Sex } from "../schema/enums/Sex";
@@ -7,7 +8,7 @@ import { Group } from "../schema/objects/Group";
 import { Pet } from "../schema/objects/Pet";
 import { Weight } from "../schema/objects/Weight";
 
-const groupResolver = () => {
+const groupResolver = (_parent: any, _args: any) => {
   const json = mockData;
 
   const group = json.map((item) => {
