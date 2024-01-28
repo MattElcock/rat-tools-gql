@@ -4,6 +4,7 @@ import { Sex } from "../schema/enums/Sex";
 import { Species } from "../schema/enums/Species";
 import { Pet } from "../schema/objects/Pet";
 import { Weight } from "../schema/objects/Weight";
+import { v4 } from "uuid";
 
 type resolverArgs = {
   name: string;
@@ -22,7 +23,9 @@ const createPetResolver = (_parent: any, args: resolverArgs) => {
     new Date(args.weightDateTaken)
   );
 
-  return new Pet("1", args.species, args.name, args.sex, args.fur, [weight]);
+  const uuid = v4();
+
+  return new Pet(uuid, args.species, args.name, args.sex, args.fur, [weight]);
 };
 
 export default createPetResolver;
