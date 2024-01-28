@@ -11,7 +11,7 @@ type resolverArgs = {
   species: Species;
   sex: Sex;
   fur: Fur[];
-  weightReading: number;
+  weightValue: number;
   weightDateTaken: string;
   weightMetric: Metric;
 };
@@ -19,7 +19,7 @@ type resolverArgs = {
 const createPetResolver = (_parent: any, args: resolverArgs) => {
   const weight = new Weight(
     args.weightMetric,
-    args.weightReading,
+    args.weightValue,
     new Date(args.weightDateTaken)
   );
 
