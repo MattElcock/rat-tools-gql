@@ -1,5 +1,7 @@
-import { Species, Sex, Fur } from "../../types";
 import { builder } from "../builder";
+import { Fur } from "../enums/Fur";
+import { Sex } from "../enums/Sex";
+import { Species } from "../enums/Species";
 import { Weight } from "./Weight";
 
 export class Pet {
@@ -33,14 +35,12 @@ builder.objectType(Pet, {
   fields: (t) => ({
     id: t.exposeID("id"),
     name: t.exposeString("name"),
-    sex: t.exposeString("sex"),
-    fur: t.exposeStringList("fur"),
+    species: t.field({ type: Species, resolve: (parent) => parent.species }),
+    sex: t.field({ type: Sex, resolve: (parent) => parent.sex }),
+    fur: t.field({ type: [Fur], resolve: (parent) => parent.fur }),
     weights: t.field({
       type: [Weight],
-      resolve: (parent) =>
-        parent.weights.map(
-          (weight) => new Weight(weight.metric, weight.value, weight.dateTaken)
-        ),
+      resolve: (parent) => parent.weights,
     }),
   }),
 });

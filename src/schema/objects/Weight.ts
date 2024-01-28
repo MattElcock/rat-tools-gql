@@ -1,5 +1,5 @@
-import { Metric } from "../../types";
 import { builder } from "../builder";
+import { Metric } from "../enums/Metric";
 
 export class Weight {
   metric: Metric;
@@ -17,7 +17,7 @@ builder.objectType(Weight, {
   name: "Weight",
   description: "A weight",
   fields: (t) => ({
-    metric: t.exposeString("metric"),
+    metric: t.field({ type: Metric, resolve: (parent) => parent.metric }),
     value: t.exposeInt("value"),
     dateTaken: t.field({
       type: "String",

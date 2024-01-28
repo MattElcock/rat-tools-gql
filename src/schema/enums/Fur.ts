@@ -1,7 +1,4 @@
-export enum Sex {
-  Male = "Male",
-  Female = "Female",
-}
+import { builder } from "../builder";
 
 export enum Fur {
   Black = "Black",
@@ -12,10 +9,6 @@ export enum Fur {
   Hairless = "Hairless",
 }
 
-export enum Species {
-  Rat = "Rat",
-}
-
-export enum Metric {
-  Grams = "Grams",
-}
+builder.enumType(Fur, {
+  name: "Fur",
+});
