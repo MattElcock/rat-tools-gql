@@ -1,7 +1,10 @@
+import { v4 } from "uuid";
 import { Group } from "../schema/objects/Group";
 
 const createGroupResolver = () => {
-  return new Group("1", []);
+  const uuid = v4();
+
+  return new Group(uuid, []);
 };
 
 export default createGroupResolver;
